@@ -1,0 +1,49 @@
+
+
+import random
+
+def play_game():
+    # generate a random number between 1 and 100
+    secret_number = random.randint(1, 100)
+    
+    # set the maximum number of trials
+    max_trials = 10
+    num_trials = 0
+    
+    # play the game
+    while num_trials < max_trials:
+        # ask the user to guess the number
+        guess = int(input("Guess the number between 1 and 100: "))
+        num_trials += 1
+        
+        # check if the guess is correct
+        if guess == secret_number:
+            if num_trials == 1:
+                print("You are one in a billion!")
+            elif num_trials <= 3:
+                print("Incredible!")
+            elif num_trials <= 7:
+                print("Very good!")
+            else:
+                print("At last, you nailed it!")
+            # end the game
+            break
+        # if the guess is incorrect, give a hint
+        elif guess < secret_number:
+            print("Too low!")
+        else:
+            print("Too high!")
+    
+    # if the player didn't guess the number after the maximum number of trials, end the game
+    if num_trials == max_trials:
+        print("So bad, you couldn't get it!")
+    
+    # ask the player if they want to play again
+    play_again = input("Do you want to play again? (yes/no): ")
+    if play_again.lower() == "yes":
+        play_game()
+    else:
+        print("Thanks for playing!")
+
+# start the game
+play_game()
